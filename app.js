@@ -3,7 +3,7 @@ const getPlayerSelection = () => {
     while(playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors' ){
         playerSelection = prompt('Please enter "rock", "paper" or "scissors"');
     }
-    return playerSelection;
+    return playerSelection.toLowerCase();
 }
 
 const getComputerSelection = () => {
@@ -18,46 +18,78 @@ const getComputerSelection = () => {
     }
 }
 
+const getNumRounds = () => {
+    return parseInt(prompt('Please select a number of rounds'))
+}
+
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
 
-const play = (playerSelection, computerSelection) => {
+const playRound = (playerSelection, computerSelection) => {
 
     const tie = () => {console.log('It\'s a tie!');}
     const win = (playerSelection, computerSelection) => {console.log('You win!' + `. ${capitalize(playerSelection)} beats ${computerSelection}.`);}
     const lose = (playerSelection, computerSelection) => {console.log('You lose :(' + `. ${capitalize(computerSelection)} beats ${playerSelection}.`);}
 
-    if(playerSelection.toLowerCase() === 'rock'){
+ 
+
+    if(playerSelection === 'rock'){
         if(computerSelection === playerSelection){
             tie()
+            return('tie')
         } else if(computerSelection === 'paper'){
             lose(playerSelection, computerSelection)
+            return('lose')
         } else {
             win(playerSelection, computerSelection)
         }
     }
 
-    if(playerSelection.toLowerCase() === 'paper'){
+    if(playerSelection === 'paper'){
         if(computerSelection === playerSelection){
             console.log('It\'s a tie!')
+            return('tie')
         } else if(computerSelection === 'scissors'){
             lose(playerSelection, computerSelection)
+            return('lose')
         } else {
             win(playerSelection, computerSelection)
         }
     }
 
-    if(playerSelection.toLowerCase() === 'scissors'){
+    if(playerSelection === 'scissors'){
         if(computerSelection === playerSelection){
             console.log('It\'s a tie!')
+            return('tie')
         } else if(computerSelection === 'rock'){
             lose(playerSelection, computerSelection)
+            return('lose')
         } else {
             win(playerSelection, computerSelection)
         }
     }
 }
 
-play(getPlayerSelection(), getComputerSelection())
+
+game = (numRounds) => {
+    let playerScore = 0;
+    let computerScore = 0;
+    let evenRounds = 0;
+
+    for(let i=0; i<numRounds; i++){
+        const result = playRound(getPlayerSelection(), getComputerSelection());
+        if (result === 'tie'){
+            evenRounds++;
+        } else if(result ==='lose'){
+            computerScore++;
+        } else{
+            playerScore++;
+        }
+    }
+}
+
+game(getNumRounds())
+
+// playRound(getPlayerSelection(), getComputerSelection())
