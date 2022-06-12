@@ -1,0 +1,73 @@
+*,
+*::after,
+*::before
+{                 /*  CSS reset   */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.6rem;
+    background-color: rgb(11, 14, 17);
+    color: rgb(202, 198, 193);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1, h2{
+    margin-bottom: 2.5rem;
+}
+
+button, select{
+    color: rgb(11, 14, 17);
+    background-color: rgb(202, 198, 193);
+    border: none;
+    border-radius: 3px;
+    padding: 1rem;
+    margin-bottom: 3rem;
+    margin-right: 1rem;
+    transition: transform 50ms;
+    cursor: pointer;
+}
+label{
+    margin-right: 2rem;
+}
+
+button:disabled{
+    opacity: .4;
+}
+
+button:active,
+select:active{
+    transform: translateY(1px);
+}
+
+.container-main{
+    border: 1px solid rgb(202, 198, 193);
+    max-width: 120rem;
+    padding: 3rem 5rem;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+li{
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.resultsContainer{
+    /* border: 1px solid pink; */
+    width: 40rem;
+    height: 60rem;
+    margin-left: 3rem;
+    padding: 2rem;
+}

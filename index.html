@@ -5,29 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>  
+    <main class="container-main">
 
-    <button class="btnRock">Rock</button>
-    <button class="btnPaper">Paper</button>
-    <button class="btnScissors">Scissors</button>
-    <button class="btnReset">Reset</button>
-    <label for="playTo">Play to: </label>
-    <select name="playTo" id="playTo">
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
+        <div class="user-interface">
+            <h1>Rock Paper Scissors</h1>  
 
-    <div class="displayResults">
-        <ul class="displayResults__list"></ul>
-    </div>
+            <div class="menu">
+                <button class="btnRock">Rock</button>
+                <button class="btnPaper">Paper</button>
+                <button class="btnScissors">Scissors</button>
+                <button class="btnReset">Reset</button>
+                <label for="playTo">Play to: </label>
+                <select name="playTo" id="playTo">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
 
-    <div class="displayScore">
-        <h2 class="displayScore__header">You: <span class="displayScore__playerScore">0</span></h2>
-        <h2 class="displayScore__header">Computer: <span class="displayScore__computerScore">0</span></h2>
-    </div>
+            <div class="displayScore">
+                <h2 class="displayScore__header">You: <span class="displayScore__playerScore">0</span></h2>
+                <h2 class="displayScore__header">Computer: <span class="displayScore__computerScore">0</span></h2>
+            </div>
+        </div>
+        
+        <div class="resultsContainer">
+            <div class="displayResults">
+                <ul class="displayResults__list"></ul>
+            </div>
+        </div>
+    </main>
+    
 
 
     <script src="./app.js"></script>
