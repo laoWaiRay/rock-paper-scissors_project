@@ -1,10 +1,6 @@
-const getPlayerSelection = () => {
-    let playerSelection = 'a';
-    while(playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors' ){
-        playerSelection = prompt('Please enter "rock", "paper" or "scissors"');
-    }
-    return playerSelection.toLowerCase();
-}
+const btnRock = document.querySelector('.btnRock');
+const btnPaper = document.querySelector('.btnPaper');
+const btnScissors = document.querySelector('.btnScissors');
 
 const getComputerSelection = () => {
     const randNum3 = Math.floor(Math.random()*3+1);
@@ -30,8 +26,12 @@ function capitalize(string) {
 const playRound = (playerSelection, computerSelection) => {
 
     const tie = () => {console.log('It\'s a tie!');}
-    const win = (playerSelection, computerSelection) => {console.log('You win!' + `. ${capitalize(playerSelection)} beats ${computerSelection}.`);}
-    const lose = (playerSelection, computerSelection) => {console.log('You lose :(' + `. ${capitalize(computerSelection)} beats ${playerSelection}.`);}
+    const win = (playerSelection, computerSelection) => {
+        console.log('You win!' + `. ${capitalize(playerSelection)} beats ${computerSelection}.`);
+    }
+    const lose = (playerSelection, computerSelection) => {
+        console.log('You lose :(' + `. ${capitalize(computerSelection)} beats ${playerSelection}.`);
+    }
 
  
 
@@ -72,24 +72,34 @@ const playRound = (playerSelection, computerSelection) => {
     }
 }
 
+btnRock.addEventListener('click', () => {
+    playRound('rock', getComputerSelection())
+})
+btnPaper.addEventListener('click', () => {
+    playRound('paper', getComputerSelection())
+})
+btnScissors.addEventListener('click', () => {
+    playRound('scissors', getComputerSelection())
+})
 
-game = (numRounds) => {
-    let playerScore = 0;
-    let computerScore = 0;
-    let evenRounds = 0;
 
-    for(let i=0; i<numRounds; i++){
-        const result = playRound(getPlayerSelection(), getComputerSelection());
-        if (result === 'tie'){
-            evenRounds++;
-        } else if(result ==='lose'){
-            computerScore++;
-        } else{
-            playerScore++;
-        }
-    }
-}
+// game = (numRounds) => {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     let evenRounds = 0;
 
-game(getNumRounds())
+//     for(let i=0; i<numRounds; i++){
+//         const result = playRound(getPlayerSelection(), getComputerSelection());
+//         if (result === 'tie'){
+//             evenRounds++;
+//         } else if(result ==='lose'){
+//             computerScore++;
+//         } else{
+//             playerScore++;
+//         }
+//     }
+//     console.log('************ GAME OVER *************')
+//     console.log(`You won ${playerScore} games. You lost ${computerScore} times. There were ${evenRounds} ties.`)
+// }
 
-// playRound(getPlayerSelection(), getComputerSelection())
+// game(getNumRounds())
