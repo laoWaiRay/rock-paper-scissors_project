@@ -1,6 +1,8 @@
 const btnRock = document.querySelector('.btnRock');
 const btnPaper = document.querySelector('.btnPaper');
 const btnScissors = document.querySelector('.btnScissors');
+const displayResults__list = document.querySelector('.displayResults__list');
+
 
 const getComputerSelection = () => {
     const randNum3 = Math.floor(Math.random()*3+1);
@@ -24,20 +26,25 @@ function capitalize(string) {
 
 
 const playRound = (playerSelection, computerSelection) => {
-
-    const tie = () => {console.log('It\'s a tie!');}
+    const displayResults__item = document.createElement('li');
+    const tie = () => {   
+        displayResults__item.innerText = `It's a tie! Nobody wins :/`;
+        displayResults__list.append(displayResults__item);
+    }
     const win = (playerSelection, computerSelection) => {
-        console.log('You win!' + `. ${capitalize(playerSelection)} beats ${computerSelection}.`);
+        displayResults__item.innerText = `You Win! ${capitalize(playerSelection)} beats ${computerSelection}.`;
+        displayResults__list.append(displayResults__item);
     }
     const lose = (playerSelection, computerSelection) => {
-        console.log('You lose :(' + `. ${capitalize(computerSelection)} beats ${playerSelection}.`);
+        displayResults__item.innerText = `You lose :(. ${capitalize(computerSelection)} beats ${playerSelection}.`;
+        displayResults__list.append(displayResults__item);
     }
 
  
 
     if(playerSelection === 'rock'){
         if(computerSelection === playerSelection){
-            tie()
+            tie();
             return('tie')
         } else if(computerSelection === 'paper'){
             lose(playerSelection, computerSelection)
@@ -49,7 +56,7 @@ const playRound = (playerSelection, computerSelection) => {
 
     if(playerSelection === 'paper'){
         if(computerSelection === playerSelection){
-            console.log('It\'s a tie!')
+            tie();
             return('tie')
         } else if(computerSelection === 'scissors'){
             lose(playerSelection, computerSelection)
@@ -61,7 +68,7 @@ const playRound = (playerSelection, computerSelection) => {
 
     if(playerSelection === 'scissors'){
         if(computerSelection === playerSelection){
-            console.log('It\'s a tie!')
+            tie();
             return('tie')
         } else if(computerSelection === 'rock'){
             lose(playerSelection, computerSelection)
