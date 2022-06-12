@@ -6,6 +6,8 @@ const displayResults__list = document.querySelector('.displayResults__list');
 const displayScore__playerScore = document.querySelector('.displayScore__playerScore');
 const displayScore__computerScore = document.querySelector('.displayScore__computerScore');
 const playTo = document.querySelector('#playTo');
+const opponent1 = document.querySelector('.opponent-1');
+const opponent2 = document.querySelector('.opponent-2');
 
 let playerScoreCount = 0;
 let computerScoreCount = 0;
@@ -98,6 +100,31 @@ const playRound = (playerSelection, computerSelection) => {
         }
     }
 
+    if(computerSelection === 'rock'){
+        opponent2.innerHTML = "";
+        const img = document.createElement('img');
+        img.src = "./images/rock.png";
+        img.classList.add('opponent-2-img')
+        img.classList.add('slideInLeft');
+        opponent2.append(img);
+    }
+    if(computerSelection === 'scissors'){
+        opponent2.innerHTML = "";
+        const img = document.createElement('img');
+        img.src = "./images/scissors.png";
+        img.classList.add('opponent-2-img')
+        img.classList.add('slideInLeft');
+        opponent2.append(img);
+    }
+    if(computerSelection === 'paper'){
+        opponent2.innerHTML = "";
+        const img = document.createElement('img');
+        img.src = "./images/paper.png";
+        img.classList.add('opponent-2-img')
+        img.classList.add('slideInLeft');
+        opponent2.append(img);
+    }
+
     if(playerScoreCount === parseInt(playTo.value)){
         const displayResults__item = document.createElement('li');
         displayResults__item.innerHTML = '<b>Congratulations, you win! Press reset to play again.</b>';
@@ -113,13 +140,32 @@ const playRound = (playerSelection, computerSelection) => {
 }
 
 btnRock.addEventListener('click', () => {
-    playRound('rock', getComputerSelection())
+    playRound('rock', getComputerSelection());
+    opponent1.innerHTML = "";
+    const img = document.createElement('img');
+    img.src = "./images/rock.png";
+    img.classList.add('opponent-1-img');
+    img.classList.add('slideInRight');
+    opponent1.append(img);
+
 })
 btnPaper.addEventListener('click', () => {
     playRound('paper', getComputerSelection())
+    opponent1.innerHTML = "";
+    const img = document.createElement('img');
+    img.src = "./images/paper.png";
+    img.classList.add('opponent-1-img');
+    img.classList.add('slideInRight');
+    opponent1.append(img);
 })
 btnScissors.addEventListener('click', () => {
     playRound('scissors', getComputerSelection())
+    opponent1.innerHTML = "";
+    const img = document.createElement('img');
+    img.src = "./images/scissors.png";
+    img.classList.add('opponent-1-img');
+    img.classList.add('slideInRight');
+    opponent1.append(img);
 })
 btnReset.addEventListener('click', () => {
     playerScoreCount = 0;

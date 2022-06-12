@@ -57,6 +57,7 @@ select:active{
     justify-content: center;
     margin: 0 auto;
     border-radius: 3px;
+    position: relative;
 }
 
 li{
@@ -70,4 +71,70 @@ li{
     height: 60rem;
     margin-left: 3rem;
     padding: 2rem;
+    z-index: 1000;
+}
+
+.animationDisplay{
+    height: 40rem;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.opponent-1{
+    width: 35%;
+    height: 100%;
+    position: absolute;
+}
+
+.opponent-2{
+    width: 35%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+}
+
+.opponent-1-img,
+.opponent-2-img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.opponent-2-img{
+    transform: scaleX(-1);
+}
+
+.slideInRight{
+    animation: slideInRight 1s linear;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(0rem);
+    }
+    50% {
+        transform: translateX(15rem) rotate(180deg);
+    }
+
+    100%{
+        transform: translateX(0rem) rotate(360deg);
+    }
+}
+
+.slideInLeft{
+    animation: slideInLeft 1s linear;
+}
+
+@keyframes slideInLeft {
+    0%{
+        transform: translateX(0) scaleX(-1) rotate(0);
+    }
+    50%{
+        transform: translateX(-15rem) scaleX(-1) rotate(180deg);
+    }
+    100%{
+        transform: translateX(0) scaleX(-1) rotate(360deg);
+    }
 }
