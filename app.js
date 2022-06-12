@@ -5,6 +5,8 @@ const btnReset = document.querySelector('.btnReset')
 const displayResults__list = document.querySelector('.displayResults__list');
 const displayScore__playerScore = document.querySelector('.displayScore__playerScore');
 const displayScore__computerScore = document.querySelector('.displayScore__computerScore');
+const playTo = document.querySelector('#playTo');
+
 let playerScoreCount = 0;
 let computerScoreCount = 0;
 
@@ -96,9 +98,15 @@ const playRound = (playerSelection, computerSelection) => {
         }
     }
 
-    if(playerScoreCount === 5){
+    if(playerScoreCount === parseInt(playTo.value)){
         const displayResults__item = document.createElement('li');
-        displayResults__item.innerHTML = '<b>Congratulations, you win! Press reset to play again</b>';
+        displayResults__item.innerHTML = '<b>Congratulations, you win! Press reset to play again.</b>';
+        displayResults__list.append(displayResults__item); 
+        toggleBtns();
+    }
+    if(computerScoreCount === parseInt(playTo.value)){
+        const displayResults__item = document.createElement('li');
+        displayResults__item.innerHTML = '<b>Sorry, you lost :( . Press reset to play again.</b>';
         displayResults__list.append(displayResults__item); 
         toggleBtns();
     }
